@@ -6,7 +6,7 @@ namespace DomainLayer
 {
     class GoalDomainEntity
     {
-      
+        public int Id { get; set; }
         public int? CreatedBy { get; set; }
         public string Title { get; set; }
         public DateTime? StartDate { get; set; }
