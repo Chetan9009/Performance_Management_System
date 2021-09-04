@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ApplicationLayer
 {
-    class GoalCreateUseCase
+    public class GoalCreateUseCase
     {
         public GoalCreateResponse Execute(GoalCreateRequest request)
         {

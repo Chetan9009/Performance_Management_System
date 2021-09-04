@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ApplicationLayer
+namespace Performance_Management_API
 {
     public class GoalCreateRequest
     {

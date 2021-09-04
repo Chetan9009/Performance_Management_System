@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ApplicationLayer
+namespace Performance_Management_API
 {
-    public class GoalCreateRequest
+    public class GoalCreateResponse
     {
-       
+        public int Id { get; set; }
         public int? CreatedBy { get; set; }
         public string Title { get; set; }
         public DateTime? StartDate { get; set; }

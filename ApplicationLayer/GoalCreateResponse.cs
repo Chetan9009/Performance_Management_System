@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ApplicationLayer
 {
-    class GoalCreateResponse
+    public class GoalCreateResponse
     {
         public int Id { get; set; }
         public int? CreatedBy { get; set; }
