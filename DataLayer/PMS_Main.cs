@@ -14,7 +14,7 @@ namespace DataLayer
 
             GoalDbEntity cg = new GoalDbEntity()
             {
-            
+
                 CreatedBy = 3,
                 Title = "Chetan Patil pune",
                 StartDate = sdt,
@@ -26,7 +26,7 @@ namespace DataLayer
             g.Create(cg);
             //g.Update(cg);
             // g.delete(3);
-            var data=g.Get();
+            var data = g.Get();
 
 
 

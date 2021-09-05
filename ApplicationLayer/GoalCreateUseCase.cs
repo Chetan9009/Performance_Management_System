@@ -9,6 +9,36 @@ namespace ApplicationLayer
 {
     public class GoalCreateUseCase
     {
+
+        //public static void Main(string[] args)
+        //{
+        //    DateTime sdt = new DateTime(2022, 09, 01);
+        //    DateTime edt = new DateTime(2022, 09, 02);
+
+        //    GoalCreateRequest cg = new GoalCreateRequest()
+        //    {
+
+        //        CreatedBy = 3,
+        //        Title = "Chetan Patil pune",
+        //        StartDate = sdt,
+        //        EndDate = edt,
+        //        Score = "103"
+
+        //    };
+        //    //Goal g = new Goal();
+        //    //g.Create(cg);
+        //    GoalCreateUseCase g = new GoalCreateUseCase();
+        //    g.Execute(cg);
+
+
+        //    //g.Update(cg);
+        //    // g.delete(3);
+        //    //var data = g.Get();
+
+
+
+
+        //}
         public GoalCreateResponse Execute(GoalCreateRequest request)
         {
 
@@ -24,25 +54,23 @@ namespace ApplicationLayer
             createDbEntity.Id = createGoalDomainEntity.Id;
             createDbEntity.CreatedBy = createGoalDomainEntity.CreatedBy;
             createDbEntity.Title = createGoalDomainEntity.Title;
-            createDbEntity.StartDate = createDbEntity.StartDate;
+            createDbEntity.StartDate = createGoalDomainEntity.StartDate;
             createDbEntity.EndDate = createGoalDomainEntity.EndDate;
             createDbEntity.Score = createGoalDomainEntity.Score;
+           
             Goal excuteGoal = new Goal();
-            excuteGoal.Create(createDbEntity);
-
-             var repoResponse = excuteGoal.Get();
-          GoalCreateResponse createGoalResponse = new GoalCreateResponse();
-            foreach (var i in repoResponse)
-            {
-                createGoalResponse.Id = i.Id;
-                createGoalResponse.CreatedBy = i.CreatedBy;
-                createGoalResponse.Title = i.Title;
-                createGoalResponse.StartDate = i.StartDate;
-                createGoalResponse.EndDate = i.EndDate;
-                createGoalResponse.Score = i.Score;
-          
-           }
-                                               
+            
+           var repoResponse = excuteGoal.Create(createDbEntity);
+            GoalCreateResponse createGoalResponse = new GoalCreateResponse();
+        
+                createGoalResponse.Id = repoResponse.Id;
+                createGoalResponse.CreatedBy = repoResponse.CreatedBy;
+                createGoalResponse.Title = repoResponse.Title;
+                createGoalResponse.StartDate = repoResponse.StartDate;
+                createGoalResponse.EndDate = repoResponse.EndDate;
+                createGoalResponse.Score = repoResponse.Score;
+         
+                                            
             return createGoalResponse;
         }
     }

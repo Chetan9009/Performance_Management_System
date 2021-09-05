@@ -11,7 +11,7 @@ namespace DataLayer
         PMSContext _Context = new PMSContext();
 
 
-        public void Create(GoalDbEntity createGoalDbEntity)
+        public GoalDbEntity Create(GoalDbEntity createGoalDbEntity)
         {
             TblGoal tg = new TblGoal()
             {
@@ -25,22 +25,41 @@ namespace DataLayer
             _Context.Add(tg);
             _Context.SaveChanges();
 
-       
+            GoalDbEntity responseGoalDbEntity = new GoalDbEntity();
+            responseGoalDbEntity.Id = tg.Id;
+            responseGoalDbEntity.CreatedBy = tg.CreatedBy;
+            responseGoalDbEntity.Title = tg.Title;
+            responseGoalDbEntity.StartDate = tg.StartDate;
+            responseGoalDbEntity.EndDate = tg.EndDate; 
+            responseGoalDbEntity.Score = tg.Score;
 
-            
+            return responseGoalDbEntity;
+
+                    
         }
 
-        public void Update(GoalDbEntity Obj)
+        public GoalDbEntity Update(GoalDbEntity updateGoalEntity)
         {
-            var ids = _Context.TblGoal.Where(d => d.CreatedBy == Obj.CreatedBy).FirstOrDefault();
 
-            ids.CreatedBy = Obj.CreatedBy;
-            ids.Title = Obj.Title;
-            ids.StartDate = Obj.StartDate;
-            ids.EndDate = Obj.EndDate;
-            ids.Score = Obj.Score;
+
+            var setGoalEntity = _Context.TblGoal.Where(d => d.Id == updateGoalEntity.Id).FirstOrDefault();
+            setGoalEntity.CreatedBy = updateGoalEntity.CreatedBy;
+            setGoalEntity.Title = updateGoalEntity.Title;
+            setGoalEntity.StartDate = updateGoalEntity.StartDate;
+            setGoalEntity.EndDate = updateGoalEntity.EndDate;
+            setGoalEntity.Score = updateGoalEntity.Score;
 
             _Context.SaveChanges();
+
+            GoalDbEntity responseGoalDbEntity = new GoalDbEntity();
+            responseGoalDbEntity.Id = setGoalEntity.Id;
+            responseGoalDbEntity.CreatedBy = setGoalEntity.CreatedBy;
+            responseGoalDbEntity.Title = setGoalEntity.Title;
+            responseGoalDbEntity.StartDate = setGoalEntity.StartDate;
+            responseGoalDbEntity.EndDate = setGoalEntity.EndDate;
+            responseGoalDbEntity.Score = setGoalEntity.Score;
+
+            return responseGoalDbEntity;
         }
 
         public void delete(int CreatedBy)

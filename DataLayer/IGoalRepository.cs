@@ -6,9 +6,9 @@ namespace DataLayer
     interface IGoalRepository
     {
 
-        void Create(GoalDbEntity Obj);
+        GoalDbEntity Create(GoalDbEntity Obj);
 
-        void Update(GoalDbEntity Obj);
+        GoalDbEntity Update(GoalDbEntity Obj);
 
         void delete(int CreateBy);
 
