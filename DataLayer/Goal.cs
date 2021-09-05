@@ -62,9 +62,9 @@ namespace DataLayer
             return responseGoalDbEntity;
         }
 
-        public void delete(int CreatedBy)
+        public void delete(int id)
         {
-            var CreatedByID = _Context.TblGoal.Where(d => d.CreatedBy == CreatedBy).FirstOrDefault();
+            var CreatedByID = _Context.TblGoal.Where(d => d.Id == id).FirstOrDefault();
             _Context.TblGoal.Remove(CreatedByID);
             _Context.SaveChanges();
         }
