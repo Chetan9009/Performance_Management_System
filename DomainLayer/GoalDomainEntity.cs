@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DomainLayer
 {
-    class GoalDomainEntity
+   public class GoalDomainEntity
     {
         public int Id { get; set; }
         public int? CreatedBy { get; set; }

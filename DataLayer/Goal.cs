@@ -6,25 +6,28 @@ using System.Text;
 
 namespace DataLayer
 {
-    class Goal : IGoalRepository
+    public class Goal : IGoalRepository
     {
         PMSContext _Context = new PMSContext();
 
 
-        public void Create(GoalDbEntity Obj)
+        public void Create(GoalDbEntity createGoalDbEntity)
         {
             TblGoal tg = new TblGoal()
             {
-                CreatedBy = Obj.CreatedBy,
-                Title = Obj.Title,
-                StartDate = Obj.StartDate,
-                EndDate = Obj.EndDate,
-                Score = Obj.Score
+                CreatedBy = createGoalDbEntity.CreatedBy,
+                Title = createGoalDbEntity.Title,
+                StartDate = createGoalDbEntity.StartDate,
+                EndDate = createGoalDbEntity.EndDate,
+                Score = createGoalDbEntity.Score
 
             };
             _Context.Add(tg);
             _Context.SaveChanges();
 
+       
+
+            
         }
 
         public void Update(GoalDbEntity Obj)
@@ -50,18 +53,21 @@ namespace DataLayer
         public List <GoalDbEntity> Get()
         {
 
-            var innerJoin = from e in _Context.TblGoal
-                            join d in _Context.TblEmployee on e.CreatedBy equals d.Id
-                            select new
-                            {
-                                CreatedBy=d.FirstName + " " +d.LastName,
-                                Title=e.Title,
-                                StartDate=e.StartDate,
-                                EndDate=e.EndDate,
-                                Score =e.Score
-                            };
-            //var obj = _Context.TblGoal.ToList();
-            return (List<GoalDbEntity>)  innerJoin;
+            var responseGoal = from e in _Context.TblGoal
+                                select new
+                               {
+                                   ID = e.Id,
+                                   CreatedBy = e.CreatedBy,
+                                   Title = e.Title,
+                                   StartDate = e.StartDate,
+                                   EndDate = e.EndDate,
+                                   Score = e.Score,
+
+                               };
+            //var responseGoal = _Context.TblGoal.ToList();
+
+
+            return (List<GoalDbEntity>)responseGoal;
         }
     }
 }

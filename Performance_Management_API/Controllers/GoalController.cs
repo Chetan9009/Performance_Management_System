@@ -34,6 +34,7 @@ namespace Performance_Management_API.Controllers
             appCreateGoalRequst.StartDate = request.StartDate;
             appCreateGoalRequst.EndDate = request.EndDate;
             appCreateGoalRequst.Score = request.Score;
+
             var appCreateGoalResponse= createGoalUseCase.Execute(appCreateGoalRequst);
 
             GoalCreateResponse createGoalResponse = new GoalCreateResponse();
