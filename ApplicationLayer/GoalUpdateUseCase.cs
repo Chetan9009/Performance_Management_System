@@ -60,7 +60,7 @@ namespace ApplicationLayer
             updateDbEntity.EndDate = updateGoalDomainEntity.EndDate;
             updateDbEntity.Score = updateGoalDomainEntity.Score;
            
-            Goal excuteGoal = new Goal();
+            GoalRepository excuteGoal = new GoalRepository();
             
            var repoResponse = excuteGoal.Update(updateDbEntity);
             GoalUpdateResponse updateGoalResponse = new GoalUpdateResponse();

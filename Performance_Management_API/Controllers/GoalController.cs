@@ -12,10 +12,10 @@ namespace Performance_Management_API.Controllers
     [Route("[controller]")]
     public class GoalController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
+        //private static readonly string[] Summaries = new[]
+        //{
+        //    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+        //};
 
         private readonly ILogger<GoalController> _logger;
 
@@ -24,7 +24,12 @@ namespace Performance_Management_API.Controllers
             _logger = logger;
         }
 
-        [Route("Goal/Create")]
+       [Route("api/goal/ping")]
+       [HttpGet]
+       public string Ping()
+        {
+            return "I Am Running";
+        }
         [HttpPost]
       public GoalCreateResponse Create(GoalCreateRequest request)
         {

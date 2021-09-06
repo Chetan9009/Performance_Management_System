@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DomainLayer", "DomainLayer\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApplicationLayer", "ApplicationLayer\ApplicationLayer.csproj", "{9D9E65FE-29C3-4D73-A3FC-CB7B1462E1BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Performance_Management_API", "Performance_Management_API\Performance_Management_API.csproj", "{B67DF8C9-E639-4E1A-B23F-7F339FB7194A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Performance_Management_API", "Performance_Management_API\Performance_Management_API.csproj", "{B67DF8C9-E639-4E1A-B23F-7F339FB7194A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

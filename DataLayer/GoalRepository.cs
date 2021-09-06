@@ -6,7 +6,7 @@ using System.Text;
 
 namespace DataLayer
 {
-    public class Goal : IGoalRepository
+    public class GoalRepository : IGoalRepository
     {
         PMSContext _Context = new PMSContext();
 

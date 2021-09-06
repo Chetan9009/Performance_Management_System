@@ -58,7 +58,7 @@ namespace ApplicationLayer
             createDbEntity.EndDate = createGoalDomainEntity.EndDate;
             createDbEntity.Score = createGoalDomainEntity.Score;
            
-            Goal excuteGoal = new Goal();
+            GoalRepository excuteGoal = new GoalRepository();
             
            var repoResponse = excuteGoal.Create(createDbEntity);
             GoalCreateResponse createGoalResponse = new GoalCreateResponse();

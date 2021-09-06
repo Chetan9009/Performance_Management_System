@@ -22,7 +22,7 @@ namespace DataLayer
                 Score = "103"
 
             };
-            Goal g = new Goal();
+            GoalRepository g = new GoalRepository();
             g.Create(cg);
             //g.Update(cg);
             // g.delete(3);
