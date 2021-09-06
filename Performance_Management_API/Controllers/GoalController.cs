@@ -84,13 +84,29 @@ namespace Performance_Management_API.Controllers
         }
         [Route("getgoals")]
         [HttpGet]
-        public GoalGetResponse GetGoals( )
+        public List<GoalGetResponse> GetGoals( )
         {
 
             GoalGetUseCase getGoals = new GoalGetUseCase();
             var responseGoals=getGoals.Execute();
 
-            return responseGoals;
+            List<GoalGetResponse> responseListGoals = new List<GoalGetResponse>();
+
+            foreach (var i in responseGoals)
+            {
+                responseListGoals.Add(new GoalGetResponse
+                {
+                    Id = i.Id,
+                    CreatedBy = i.CreatedBy,
+                    Title = i.Title,
+                    StartDate = i.StartDate,
+                    EndDate = i.EndDate,
+                    Score = i.Score
+
+                });
+            }
+
+            return responseListGoals;
 
         }
     }

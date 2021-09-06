@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+
 namespace DataLayer
 {
     public class GoalRepository : IGoalRepository
@@ -72,21 +73,38 @@ namespace DataLayer
         public List <GoalDbEntity> Get()
         {
 
-            var responseGoal = from e in _Context.TblGoal
-                                select new
-                               {
-                                   ID = e.Id,
-                                   CreatedBy = e.CreatedBy,
-                                   Title = e.Title,
-                                   StartDate = e.StartDate,
-                                   EndDate = e.EndDate,
-                                   Score = e.Score,
+            //var responseGoal = from e in _Context.TblGoal
+            //                    select new
+            //                   {
+            //                       ID = e.Id,
+            //                       CreatedBy = e.CreatedBy,
+            //                       Title = e.Title,
+            //                       StartDate = e.StartDate,
+            //                       EndDate = e.EndDate,
+            //                       Score = e.Score,
 
-                               };
-            //var responseGoal = _Context.TblGoal.ToList();
+            //                   };
+            var responseGoal = _Context.TblGoal.ToList();
 
+            List<GoalDbEntity> responseListGoals = new List<GoalDbEntity>();
 
-            return (List<GoalDbEntity>)responseGoal;
+            foreach (var i in responseGoal)
+            {
+                responseListGoals.Add(new GoalDbEntity
+                {
+                    Id=i.Id,
+                    CreatedBy=i.CreatedBy,
+                    Title=i.Title,
+                    StartDate=i.StartDate,
+                    EndDate=i.EndDate,
+                    Score=i.Score
+                    
+                });
+            }
+
+            //List<GoalDbEntity> responseGetAllGoals =new List<GoalDbEntity> ((IEnumerable<GoalDbEntity>)responseGoal);
+
+            return responseListGoals;
         }
     }
 }

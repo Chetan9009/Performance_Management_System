@@ -7,25 +7,29 @@ namespace ApplicationLayer
 {
    public class GoalGetUseCase
     {
-        public GoalGetResponse Execute( )
+        public List<GoalGetResponse> Execute( )
         {
             GoalRepository excuteGoal = new GoalRepository();
 
            var repoResponse = excuteGoal.Get();
 
-            GoalGetResponse getGoals = new GoalGetResponse();
-            foreach(var i in repoResponse)
+            List<GoalGetResponse> responseListGoals = new List<GoalGetResponse>();
+           
+            foreach (var i in repoResponse)
             {
-                getGoals.Id = i.Id;
-                getGoals.CreatedBy = i.CreatedBy;
-                getGoals.Title = i.Title;
-                getGoals.StartDate = i.StartDate;
-                getGoals.EndDate = i.EndDate;
-               
-                getGoals.Score = i.Score;
+                responseListGoals.Add(new GoalGetResponse
+                {
+                    Id = i.Id,
+                    CreatedBy = i.CreatedBy,
+                    Title = i.Title,
+                    StartDate = i.StartDate,
+                    EndDate = i.EndDate,
+                    Score = i.Score
+
+                });
             }
-                  
-            return  getGoals;
+
+            return responseListGoals;
 
         }
     }
