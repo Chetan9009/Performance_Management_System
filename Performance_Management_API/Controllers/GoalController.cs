@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Performance_Management_API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class GoalController : ControllerBase
     {
         //private static readonly string[] Summaries = new[]
@@ -24,12 +24,13 @@ namespace Performance_Management_API.Controllers
             _logger = logger;
         }
 
-       [Route("api/goal/ping")]
+       [Route("ping")]
        [HttpGet]
        public string Ping()
         {
             return "I Am Running";
         }
+        [Route("create")]
         [HttpPost]
       public GoalCreateResponse Create(GoalCreateRequest request)
         {
@@ -54,7 +55,8 @@ namespace Performance_Management_API.Controllers
             return createGoalResponse;
 
         }
-
+        [HttpPut]
+        [Route("update")]
         public GoalUpdateResponse Update(GoalUpdateRequest updateRequest)
         {
             GoalUpdateUseCase createGoalUseCase = new GoalUpdateUseCase();
@@ -78,6 +80,17 @@ namespace Performance_Management_API.Controllers
             updateGoalResponse.Score = appUpdateGoalResponse.Score;
 
             return updateGoalResponse;
+
+        }
+        [Route("getgoals")]
+        [HttpGet]
+        public GoalGetResponse GetGoals( )
+        {
+
+            GoalGetUseCase getGoals = new GoalGetUseCase();
+            var responseGoals=getGoals.Execute();
+
+            return responseGoals;
 
         }
     }

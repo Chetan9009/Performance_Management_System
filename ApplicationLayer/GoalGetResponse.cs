@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace DataLayer
+namespace ApplicationLayer
 {
-    public class GoalDbEntity
+    public class GoalGetResponse
     {
         public int Id { get; set; }
         public int? CreatedBy { get; set; }
@@ -10,8 +12,5 @@ namespace DataLayer
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
         public string Score { get; set; }
-
-       
     }
 }
-
