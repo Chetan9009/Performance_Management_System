@@ -10,7 +10,7 @@ namespace DataLayer
 
         GoalDbEntity Update(GoalDbEntity Obj);
 
-        string delete(int CreateBy);
+        void delete(int CreateBy);
 
         List<GoalDbEntity> Get();
 

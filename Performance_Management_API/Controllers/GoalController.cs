@@ -84,13 +84,15 @@ namespace Performance_Management_API.Controllers
         }
         [Route("delete")]
         [HttpDelete]
-        public string delete(int id)
+        public void delete(int id)
         {
             GoalDeleteUseCase deleteGoal = new GoalDeleteUseCase();
-            var deleteResponse= deleteGoal.Execute(id);
+            deleteGoal.Execute(id);
 
-            return deleteResponse;
+            
         }
+
+
         [Route("get")]
         [HttpGet]
         public List<GoalGetResponse> GetGoals( )
