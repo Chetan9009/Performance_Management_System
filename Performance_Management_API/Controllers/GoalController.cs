@@ -91,7 +91,7 @@ namespace Performance_Management_API.Controllers
 
             return deleteResponse;
         }
-        [Route("getgoals")]
+        [Route("get")]
         [HttpGet]
         public List<GoalGetResponse> GetGoals( )
         {
