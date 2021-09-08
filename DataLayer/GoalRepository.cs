@@ -63,11 +63,13 @@ namespace DataLayer
             return responseGoalDbEntity;
         }
 
-        public void delete(int id)
+        public string delete(int id)
         {
             var CreatedByID = _Context.TblGoal.Where(d => d.Id == id).FirstOrDefault();
             _Context.TblGoal.Remove(CreatedByID);
             _Context.SaveChanges();
+
+            return "Goal Deleted Successfully";
         }
 
         public List <GoalDbEntity> Get()

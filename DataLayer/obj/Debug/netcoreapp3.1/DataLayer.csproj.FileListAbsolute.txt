@@ -6,4 +6,3 @@ C:\Users\SHRI\source\repos\Perfomance_Managment_System\DataLayer\obj\Debug\netco
 C:\Users\SHRI\source\repos\Perfomance_Managment_System\DataLayer\obj\Debug\netcoreapp3.1\DataLayer.csproj.CoreCompileInputs.cache
 C:\Users\SHRI\source\repos\Perfomance_Managment_System\DataLayer\obj\Debug\netcoreapp3.1\DataLayer.dll
 C:\Users\SHRI\source\repos\Perfomance_Managment_System\DataLayer\obj\Debug\netcoreapp3.1\DataLayer.pdb
-C:\Users\SHRI\source\repos\Perfomance_Managment_System\DataLayer\obj\Debug\netcoreapp3.1\DataLayer.csproj.AssemblyReference.cache

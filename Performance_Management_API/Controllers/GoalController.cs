@@ -59,7 +59,7 @@ namespace Performance_Management_API.Controllers
         [Route("update")]
         public GoalUpdateResponse Update(GoalUpdateRequest updateRequest)
         {
-            GoalUpdateUseCase createGoalUseCase = new GoalUpdateUseCase();
+            GoalUpdateUseCase updateGoalUseCase = new GoalUpdateUseCase();
             ApplicationLayer.GoalUpdateRequest appUpdateGoalRequst = new ApplicationLayer.GoalUpdateRequest();
 
             appUpdateGoalRequst.Id = updateRequest.Id;
@@ -69,7 +69,7 @@ namespace Performance_Management_API.Controllers
             appUpdateGoalRequst.EndDate = updateRequest.EndDate;
             appUpdateGoalRequst.Score = updateRequest.Score;
 
-            var appUpdateGoalResponse = createGoalUseCase.Execute(appUpdateGoalRequst);
+            var appUpdateGoalResponse = updateGoalUseCase.Execute(appUpdateGoalRequst);
 
             GoalUpdateResponse updateGoalResponse = new GoalUpdateResponse();
             updateGoalResponse.Id = appUpdateGoalResponse.Id;
@@ -81,6 +81,15 @@ namespace Performance_Management_API.Controllers
 
             return updateGoalResponse;
 
+        }
+        [Route("delete")]
+        [HttpDelete]
+        public string delete(int id)
+        {
+            GoalDeleteUseCase deleteGoal = new GoalDeleteUseCase();
+            var deleteResponse= deleteGoal.Execute(id);
+
+            return deleteResponse;
         }
         [Route("getgoals")]
         [HttpGet]
