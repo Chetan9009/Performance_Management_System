@@ -24,15 +24,15 @@ namespace Performance_Management_API.Controllers
             _logger = logger;
         }
 
-       [Route("ping")]
-       [HttpGet]
-       public string Ping()
+        [Route("ping")]
+        [HttpGet]
+        public string Ping()
         {
             return "I Am Running";
         }
         [Route("create")]
         [HttpPost]
-      public GoalCreateResponse Create(GoalCreateRequest request)
+        public GoalCreateResponse Create(GoalCreateRequest request)
         {
             GoalCreateUseCase createGoalUseCase = new GoalCreateUseCase();
             ApplicationLayer.GoalCreateRequest appCreateGoalRequst = new ApplicationLayer.GoalCreateRequest();
@@ -42,10 +42,10 @@ namespace Performance_Management_API.Controllers
             appCreateGoalRequst.EndDate = request.EndDate;
             appCreateGoalRequst.Score = request.Score;
 
-            var appCreateGoalResponse= createGoalUseCase.Execute(appCreateGoalRequst);
+            var appCreateGoalResponse = createGoalUseCase.Execute(appCreateGoalRequst);
 
             GoalCreateResponse createGoalResponse = new GoalCreateResponse();
-            createGoalResponse.Id = appCreateGoalResponse.Id;         
+            createGoalResponse.Id = appCreateGoalResponse.Id;
             createGoalResponse.CreatedBy = appCreateGoalResponse.CreatedBy;
             createGoalResponse.Title = appCreateGoalResponse.Title;
             createGoalResponse.StartDate = appCreateGoalResponse.StartDate;
@@ -82,7 +82,7 @@ namespace Performance_Management_API.Controllers
             return updateGoalResponse;
 
         }
-        [Route("delete")]
+        [Route("delete/{id}")]
         [HttpDelete]
         public void delete(int id)
         {
