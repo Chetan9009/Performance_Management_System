@@ -108,5 +108,41 @@ namespace DataLayer
 
             return responseListGoals;
         }
+        public List<GoalDbEntity> Get(int id)
+        {
+
+            var responseGoal = from e in _Context.TblGoal where e.Id ==id
+                               select new
+                               {
+                                  Id=e.Id,
+                                   CreatedBy = e.CreatedBy,
+                                   Title = e.Title,
+                                   StartDate = e.StartDate,
+                                   EndDate = e.EndDate,
+                                   Score = e.Score,
+
+                               };
+           // var responseGoal = _Context.TblGoal.ToList();
+
+            List<GoalDbEntity> responseListGoal = new List<GoalDbEntity>();
+
+            foreach (var i in responseGoal)
+            {
+                responseListGoal.Add(new GoalDbEntity
+                {
+                    Id=i.Id,
+                    CreatedBy = i.CreatedBy,
+                    Title = i.Title,
+                    StartDate = i.StartDate,
+                    EndDate = i.EndDate,
+                    Score = i.Score
+
+                });
+            }
+
+            //List<GoalDbEntity> responseGetAllGoals =new List<GoalDbEntity> ((IEnumerable<GoalDbEntity>)responseGoal);
+
+            return responseListGoal;
+        }
     }
 }

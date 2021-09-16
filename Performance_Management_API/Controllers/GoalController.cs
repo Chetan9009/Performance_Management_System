@@ -120,5 +120,33 @@ namespace Performance_Management_API.Controllers
             return responseListGoals;
 
         }
+
+        [Route("get/{id}")]
+        [HttpGet]
+        public List<GoalGetResponse> GetGoals(int id)
+        {
+
+            GoalGetUseCase getGoals = new GoalGetUseCase();
+            var responseGoals = getGoals.Execute(id);
+
+            List<GoalGetResponse> responseListGoal = new List<GoalGetResponse>();
+
+            foreach (var i in responseGoals)
+            {
+                responseListGoal.Add(new GoalGetResponse
+                {
+                    Id = i.Id,
+                    CreatedBy = i.CreatedBy,
+                    Title = i.Title,
+                    StartDate = i.StartDate,
+                    EndDate = i.EndDate,
+                    Score = i.Score
+
+                });
+            }
+
+            return responseListGoal;
+
+        }
     }
 }

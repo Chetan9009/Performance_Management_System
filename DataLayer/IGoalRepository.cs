@@ -13,6 +13,7 @@ namespace DataLayer
         void delete(int CreateBy);
 
         List<GoalDbEntity> Get();
+        List<GoalDbEntity> Get(int id);
 
     }
 }
