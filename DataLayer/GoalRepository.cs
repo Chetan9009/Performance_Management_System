@@ -144,5 +144,20 @@ namespace DataLayer
 
             return responseListGoal;
         }
+
+        public bool CreateGoalMapper(GoalMapperDbEntity createGoalMapper)
+        {
+            TblEmployeeGoalMapping tgm = new TblEmployeeGoalMapping()
+            {
+               Empid=createGoalMapper.Empid,
+               Goalid=createGoalMapper.Goalid,
+               CreateDate=createGoalMapper.CreateDate
+
+            };
+            _Context.Add(tgm);
+            _Context.SaveChanges();
+            return true;
+
+        }
     }
 }

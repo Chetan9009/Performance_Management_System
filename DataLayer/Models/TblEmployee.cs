@@ -7,7 +7,7 @@ namespace DataLayer.Models
     {
         public TblEmployee()
         {
-            TblGoal = new HashSet<TblGoal>();
+            TblEmployeeGoalMapping = new HashSet<TblEmployeeGoalMapping>();
         }
 
         public int Id { get; set; }
@@ -18,6 +18,6 @@ namespace DataLayer.Models
         public string Password { get; set; }
 
         public virtual TblDesignation Designation { get; set; }
-        public virtual ICollection<TblGoal> TblGoal { get; set; }
+        public virtual ICollection<TblEmployeeGoalMapping> TblEmployeeGoalMapping { get; set; }
     }
 }

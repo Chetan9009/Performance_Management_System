@@ -17,6 +17,7 @@ namespace DataLayer.Models
 
         public virtual DbSet<TblDesignation> TblDesignation { get; set; }
         public virtual DbSet<TblEmployee> TblEmployee { get; set; }
+        public virtual DbSet<TblEmployeeGoalMapping> TblEmployeeGoalMapping { get; set; }
         public virtual DbSet<TblGoal> TblGoal { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -70,6 +71,25 @@ namespace DataLayer.Models
                     .HasConstraintName("FK_Tbl_Employee_Tbl_Designation");
             });
 
+            modelBuilder.Entity<TblEmployeeGoalMapping>(entity =>
+            {
+                entity.ToTable("Tbl_EmployeeGoalMapping");
+
+                entity.Property(e => e.CreateDate).HasColumnType("datetime");
+
+                entity.HasOne(d => d.Emp)
+                    .WithMany(p => p.TblEmployeeGoalMapping)
+                    .HasForeignKey(d => d.Empid)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Tbl_EmployeeGoalMapping_Tbl_Employee");
+
+                entity.HasOne(d => d.Goal)
+                    .WithMany(p => p.TblEmployeeGoalMapping)
+                    .HasForeignKey(d => d.Goalid)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Tbl_EmployeeGoalMapping_Tbl_Goal");
+            });
+
             modelBuilder.Entity<TblGoal>(entity =>
             {
                 entity.ToTable("Tbl_Goal");
@@ -81,11 +101,6 @@ namespace DataLayer.Models
                 entity.Property(e => e.Score).HasMaxLength(50);
 
                 entity.Property(e => e.StartDate).HasColumnType("datetime");
-
-                entity.HasOne(d => d.CreatedByNavigation)
-                    .WithMany(p => p.TblGoal)
-                    .HasForeignKey(d => d.CreatedBy)
-                    .HasConstraintName("FK_Tbl_Goal_Tbl_Employee");
             });
 
             OnModelCreatingPartial(modelBuilder);

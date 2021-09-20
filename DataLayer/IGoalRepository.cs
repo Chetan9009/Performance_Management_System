@@ -15,5 +15,7 @@ namespace DataLayer
         List<GoalDbEntity> Get();
         List<GoalDbEntity> Get(int id);
 
+        bool CreateGoalMapper(GoalMapperDbEntity obj);
+
     }
 }
