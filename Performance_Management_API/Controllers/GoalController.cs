@@ -91,9 +91,7 @@ namespace Performance_Management_API.Controllers
 
             
         }
-
-
-        [Route("get")]
+         [Route("get")]
         [HttpGet]
         public List<GoalGetResponse> GetGoals( )
         {

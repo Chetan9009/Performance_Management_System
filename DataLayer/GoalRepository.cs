@@ -1,4 +1,5 @@
 ﻿using DataLayer.Models;
+using EFCore.BulkExtensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -145,16 +146,21 @@ namespace DataLayer
             return responseListGoal;
         }
 
-        public bool CreateGoalMapper(GoalMapperDbEntity createGoalMapper)
+        public bool CreateGoalMapper(List<GoalMapperDbEntity> createGoalMapper)
         {
-            TblEmployeeGoalMapping tgm = new TblEmployeeGoalMapping()
+            List<TblEmployeeGoalMapping> createGoalMapping = new List<TblEmployeeGoalMapping>();
+            foreach(var i in createGoalMapper)
             {
-               Empid=createGoalMapper.Empid,
-               Goalid=createGoalMapper.Goalid,
-               CreateDate=createGoalMapper.CreateDate
+                createGoalMapping.Add(new TblEmployeeGoalMapping
+                {
+                    Empid = i.Empid,
+                    Goalid = i.Goalid,
+                    CreateDate = i.CreateDate
+                });
+              
 
             };
-            _Context.Add(tgm);
+            _Context.BulkInsert(createGoalMapping);
             _Context.SaveChanges();
             return true;
 

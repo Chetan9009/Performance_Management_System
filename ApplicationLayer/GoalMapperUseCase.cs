@@ -7,21 +7,33 @@ namespace ApplicationLayer
 {
     public class GoalMapperUseCase
     {
-        public bool Execute(CreateGoalMapper requestGoalMapper)
+        public bool Execute(List<CreateGoalMapper> requestGoalMapper)
         {
-            DomainLayer.GoalMapperDomainEntity createGoalMapperDomainEntity = new DomainLayer.GoalMapperDomainEntity()
+            List<DomainLayer.GoalMapperDomainEntity> createGoalMapperDomainEntity = new List<DomainLayer.GoalMapperDomainEntity>();
+            foreach(var i in requestGoalMapper )
             {
-                Empid = requestGoalMapper.EmpId,
-                Goalid = requestGoalMapper.GoalIds,
-                CreateDate = requestGoalMapper.CreateDate
-            };
+                createGoalMapperDomainEntity.Add(new DomainLayer.GoalMapperDomainEntity
+                {
+                    Empid = i.EmpId,
+                    Goalid = i.GoalIds,
+                    CreateDate = i.CreateDate
+                });
+            }
 
-            DataLayer.GoalMapperDbEntity createGoalMapperDbEntity = new DataLayer.GoalMapperDbEntity()
+
+
+            List<DataLayer.GoalMapperDbEntity> createGoalMapperDbEntity = new List<DataLayer.GoalMapperDbEntity>();
+            foreach(var i in createGoalMapperDomainEntity)
             {
-                Empid = createGoalMapperDomainEntity.Empid,
-                Goalid = createGoalMapperDomainEntity.Goalid,
-                CreateDate = createGoalMapperDomainEntity.CreateDate
-            };
+                createGoalMapperDbEntity.Add(new DataLayer.GoalMapperDbEntity
+                {
+                    Empid = i.Empid,
+                    Goalid = i.Goalid,
+                    CreateDate = i.CreateDate
+                });
+            }
+
+            
 
 
             GoalRepository excuteGoal = new GoalRepository();

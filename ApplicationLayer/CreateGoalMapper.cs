@@ -8,7 +8,6 @@ namespace ApplicationLayer
     {
         public int EmpId { get; set; }
         public int GoalIds  { get; set; }
-
         public DateTime CreateDate { get; set; }
     }
 }
