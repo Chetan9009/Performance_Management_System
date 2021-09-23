@@ -1,6 +1,7 @@
 C:\Users\SHRI\source\repos\Perfomance_Managment_System\DomainLayer\bin\Debug\netcoreapp3.1\DomainLayer.deps.json
 C:\Users\SHRI\source\repos\Perfomance_Managment_System\DomainLayer\bin\Debug\netcoreapp3.1\DomainLayer.dll
 C:\Users\SHRI\source\repos\Perfomance_Managment_System\DomainLayer\bin\Debug\netcoreapp3.1\DomainLayer.pdb
+C:\Users\SHRI\source\repos\Perfomance_Managment_System\DomainLayer\obj\Debug\netcoreapp3.1\DomainLayer.csproj.AssemblyReference.cache
 C:\Users\SHRI\source\repos\Perfomance_Managment_System\DomainLayer\obj\Debug\netcoreapp3.1\DomainLayer.AssemblyInfoInputs.cache
 C:\Users\SHRI\source\repos\Perfomance_Managment_System\DomainLayer\obj\Debug\netcoreapp3.1\DomainLayer.AssemblyInfo.cs
 C:\Users\SHRI\source\repos\Perfomance_Managment_System\DomainLayer\obj\Debug\netcoreapp3.1\DomainLayer.csproj.CoreCompileInputs.cache
