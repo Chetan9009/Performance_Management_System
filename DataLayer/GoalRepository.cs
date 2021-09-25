@@ -109,6 +109,47 @@ namespace DataLayer
 
             return responseListGoals;
         }
+
+
+        public List<EmployeeGoalDbEntity> GetEmpGoal()
+        {
+                   
+            List<EmployeeGoalDbEntity> responseEmployeegoals = new List<EmployeeGoalDbEntity>();
+            var responseGoal = from g in _Context.TblGoal
+                               join e in _Context.TblEmployee on g.CreatedBy equals e.Id
+                               select new
+                               {
+                                   ID = g.Id,
+                                   CreatedBy = g.CreatedBy,
+                                   EmpFirstName = e.FirstName,
+                                   EmpLastName = e.LastName,
+                                   Title = g.Title,
+                                   StartDate = g.StartDate,
+                                   EndDate = g.EndDate,
+                                   Score = g.Score,
+
+                               };
+
+            foreach (var i in responseGoal)
+            {
+
+                responseEmployeegoals.Add(new EmployeeGoalDbEntity
+                {
+                    Id = i.ID,
+                    CreatedBy = i.CreatedBy,
+                    FirstName=i.EmpFirstName,
+                    LastName=i.EmpLastName,
+                    Title = i.Title,
+                    StartDate = i.StartDate,
+                    EndDate = i.EndDate,
+                    Score = i.Score
+                });
+
+            }
+           
+            return responseEmployeegoals;
+
+        }
         public List<GoalDbEntity> Get(int id)
         {
 

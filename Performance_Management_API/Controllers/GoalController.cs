@@ -118,6 +118,34 @@ namespace Performance_Management_API.Controllers
             return responseListGoals;
 
         }
+        [Route("getEmpGoal")]
+        [HttpGet]
+        public List<EmployeeGoal> GetEmpGoal()
+        {
+            EmployeeGoalUseCase excuteGetEmployeeGoal = new EmployeeGoalUseCase();
+            var responseEmployeeGoals = excuteGetEmployeeGoal.Execute();
+            List<EmployeeGoal> responseListEmpGoals = new List<EmployeeGoal>();
+
+            foreach (var i in responseEmployeeGoals)
+            {
+                responseListEmpGoals.Add(new EmployeeGoal
+                {
+                    Id = i.Id,
+                    FirstName = i.FirstName,
+                    LastName = i.LastName,
+                    CreatedBy = i.CreatedBy,
+                    Title = i.Title,
+                    StartDate = i.StartDate,
+                    EndDate = i.EndDate,
+                    Score = i.Score
+                });
+
+            }
+
+            return responseListEmpGoals;
+          
+        }
+        
 
         [Route("get/{id}")]
         [HttpGet]
