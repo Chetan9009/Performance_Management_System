@@ -14,7 +14,8 @@ namespace ApplicationLayer
             {
                 createGoalMapperDomainEntity.Add(new DomainLayer.GoalMapperDomainEntity
                 {
-                    Empid = i.EmpId,
+                    AssignBy = i.AssignBy,
+                    AssignTo=i.AssignTo,
                     Goalid = i.GoalIds,
                     CreateDate = i.CreateDate
                 });
@@ -27,7 +28,8 @@ namespace ApplicationLayer
             {
                 createGoalMapperDbEntity.Add(new DataLayer.GoalMapperDbEntity
                 {
-                    Empid = i.Empid,
+                    AssignBy = i.AssignBy,
+                    AssignTo=i.AssignTo,
                     Goalid = i.Goalid,
                     CreateDate = i.CreateDate
                 });

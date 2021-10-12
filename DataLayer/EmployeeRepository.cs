@@ -1,4 +1,5 @@
-﻿using DataLayer.Models;
+﻿using DataLayer.Model;
+using DataLayer.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,31 @@ namespace DataLayer
             }
             return getAllEmployee;
 
+
+        }
+
+        public EmployeeDbEntity Create(EmployeeDbEntity createEmployee)
+        {
+            TblEmployee emp = new TblEmployee()
+            {
+                FirstName=createEmployee.FirstName,
+                LastName=createEmployee.LastName,
+                DesignationId=createEmployee.DesignationId,
+                EmailId=createEmployee.EmailId,
+                Password=createEmployee.Password
+             };
+            _Context.Add(emp);
+            _Context.SaveChanges();
+
+            EmployeeDbEntity responseEmployee = new EmployeeDbEntity();
+            responseEmployee.Id = emp.Id;
+            responseEmployee.FirstName = emp.FirstName;
+            responseEmployee.LastName = emp.LastName;
+            responseEmployee.DesignationId = emp.DesignationId;
+            responseEmployee.EmailId = emp.EmailId;
+            responseEmployee.Password = emp.Password;
+
+            return responseEmployee;
 
         }
     }

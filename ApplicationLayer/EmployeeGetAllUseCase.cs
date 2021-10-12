@@ -8,7 +8,7 @@ namespace ApplicationLayer
 {
    public class EmployeeGetAllUseCase
     {
-        public List<EmployeeGetAll> Execute()
+        public List<EmployeeCreateResponse> Execute()
         {
             EmployeeRepository excuteGetEmployee = new EmployeeRepository();
 
@@ -21,16 +21,16 @@ namespace ApplicationLayer
                 responseListEmployee.Add(new EmployeeDomainEntity
                 {
                     Id = i.Id,
-                   FirstName=i.FirstName
+                    FirstName=i.FirstName
                    ,LastName=i.LastName
 
                 });
             }
 
-            List<EmployeeGetAll> responseallEmployee = new List<EmployeeGetAll>();
+            List<EmployeeCreateResponse> responseallEmployee = new List<EmployeeCreateResponse>();
             foreach(var i in responseListEmployee)
             {
-                responseallEmployee.Add(new EmployeeGetAll
+                responseallEmployee.Add(new EmployeeCreateResponse
                 {
                     Id = i.Id,
                     FirstName = i.FirstName

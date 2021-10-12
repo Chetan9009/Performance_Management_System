@@ -7,5 +7,7 @@ namespace DataLayer
     interface IEmployeeRepository
     {
         List<EmployeeDbEntity> GetEmployee();
+
+        EmployeeDbEntity Create(EmployeeDbEntity createEmployee);
     }
 }

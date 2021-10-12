@@ -35,6 +35,39 @@ namespace Performance_Management_API.Controllers
             }
             return allEmployee;
         }
-   
+
+        [Route("create")]
+        [HttpPost]
+        public EmployeeCreateResponse  Create(EmployeeCreateRequest request)
+        {
+            
+            ApplicationLayer.EmployeeCreateRequest appCreateEmployeeRequest = new ApplicationLayer.EmployeeCreateRequest()
+            {
+                FirstName=request.FirstName,
+                LastName=request.LastName,
+                DesignationId=request.DesignationId,
+                EmailId=request.EmailId,
+                Password=request.Password
+
+            };
+            EmployeeCreateUseCase createEmployeeUseCase = new EmployeeCreateUseCase();
+
+            var appCreateEmployeeResponse = createEmployeeUseCase.Execute(appCreateEmployeeRequest);
+
+            EmployeeCreateResponse createEmployeeResponse = new EmployeeCreateResponse()
+            {
+                Id = appCreateEmployeeResponse.Id,
+                FirstName = appCreateEmployeeResponse.FirstName,
+                LastName = appCreateEmployeeResponse.LastName,
+                DesignationId = appCreateEmployeeResponse.DesignationId,
+                EmailId = appCreateEmployeeResponse.EmailId,
+                Password = appCreateEmployeeResponse.Password
+            };
+          
+
+            return createEmployeeResponse;
+
+        }
+
     }
 }

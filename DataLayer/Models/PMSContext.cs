@@ -1,4 +1,5 @@
 ﻿using System;
+using DataLayer.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -77,17 +78,17 @@ namespace DataLayer.Models
 
                 entity.Property(e => e.CreateDate).HasColumnType("datetime");
 
-                entity.HasOne(d => d.Emp)
-                    .WithMany(p => p.TblEmployeeGoalMapping)
-                    .HasForeignKey(d => d.Empid)
+                entity.HasOne(d => d.AssignByNavigation)
+                    .WithMany(p => p.TblEmployeeGoalMappingAssignByNavigation)
+                    .HasForeignKey(d => d.AssignBy)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Tbl_EmployeeGoalMapping_Tbl_Employee");
 
-                entity.HasOne(d => d.Goal)
-                    .WithMany(p => p.TblEmployeeGoalMapping)
-                    .HasForeignKey(d => d.Goalid)
+                entity.HasOne(d => d.AssignToNavigation)
+                    .WithMany(p => p.TblEmployeeGoalMappingAssignToNavigation)
+                    .HasForeignKey(d => d.AssignTo)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Tbl_EmployeeGoalMapping_Tbl_Goal");
+                    .HasConstraintName("FK_Tbl_EmployeeGoalMapping_Tbl_Employee1");
             });
 
             modelBuilder.Entity<TblGoal>(entity =>

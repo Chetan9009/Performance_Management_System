@@ -25,11 +25,8 @@ namespace ApplicationLayer
                 EndDate=i.EndDate,Score=i.Score
                 
                 });
-
-                   
                 };
-
-            return responseEmployeeGoals;
+         return responseEmployeeGoals;
 
         }
 

@@ -1,4 +1,5 @@
-﻿using DataLayer.Models;
+﻿using DataLayer.Model;
+using DataLayer.Models;
 using EFCore.BulkExtensions;
 using System;
 using System.Collections.Generic;
@@ -194,7 +195,8 @@ namespace DataLayer
             {
                 createGoalMapping.Add(new TblEmployeeGoalMapping
                 {
-                    Empid = i.Empid,
+                    AssignBy = i.AssignBy,
+                    AssignTo=i.AssignTo,
                     Goalid = i.Goalid,
                     CreateDate = i.CreateDate
                 });

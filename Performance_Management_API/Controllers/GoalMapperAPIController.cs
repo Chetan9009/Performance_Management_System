@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Text.Json;
+using Performance_Management_API.Contracts.Request;
 
 namespace Performance_Management_API.Controllers
 {
@@ -15,19 +16,20 @@ namespace Performance_Management_API.Controllers
     {
         [Route("AssignGoals/{empId}")]
         [HttpPost]
-        public bool CreateMapGoals([FromRoute] int empId,List<int> goalIds)
+        public bool CreateMapGoals([FromRoute] int empId, AssignGoalRequest request)
         {
 
             GoalMapperUseCase createGoalMapperUseCase = new GoalMapperUseCase();
             List<CreateGoalMapper> createGoalMapper = new List<CreateGoalMapper>();
             DateTime createDate = DateTime.Now;
     
-             foreach (var i in goalIds)
+             foreach (var i in request.Goals)
             {
                 createGoalMapper.Add(new CreateGoalMapper
                 {
 
-                EmpId=empId,
+                AssignBy=request.AssignBy,
+                AssignTo=empId,
                 GoalIds=i,
                 CreateDate=createDate
 

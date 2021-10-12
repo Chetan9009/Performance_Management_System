@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DataLayer.Models
+namespace DataLayer.Model
 {
     public partial class TblEmployee
     {
         public TblEmployee()
         {
-            TblEmployeeGoalMapping = new HashSet<TblEmployeeGoalMapping>();
+            TblEmployeeGoalMappingAssignByNavigation = new HashSet<TblEmployeeGoalMapping>();
+            TblEmployeeGoalMappingAssignToNavigation = new HashSet<TblEmployeeGoalMapping>();
         }
 
         public int Id { get; set; }
@@ -18,6 +19,7 @@ namespace DataLayer.Models
         public string Password { get; set; }
 
         public virtual TblDesignation Designation { get; set; }
-        public virtual ICollection<TblEmployeeGoalMapping> TblEmployeeGoalMapping { get; set; }
+        public virtual ICollection<TblEmployeeGoalMapping> TblEmployeeGoalMappingAssignByNavigation { get; set; }
+        public virtual ICollection<TblEmployeeGoalMapping> TblEmployeeGoalMappingAssignToNavigation { get; set; }
     }
 }
