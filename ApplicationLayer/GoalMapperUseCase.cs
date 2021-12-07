@@ -34,13 +34,8 @@ namespace ApplicationLayer
                     CreateDate = i.CreateDate
                 });
             }
-
-            
-
-
             GoalRepository excuteGoal = new GoalRepository();
             var repoResponse = excuteGoal.CreateGoalMapper(createGoalMapperDbEntity);
-
             return repoResponse;
 
         }
